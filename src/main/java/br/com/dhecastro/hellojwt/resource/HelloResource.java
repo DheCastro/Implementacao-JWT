@@ -10,7 +10,7 @@ import br.com.dhecastro.hellojwt.model.Response;
 @RequestMapping("/hello")
 public class HelloResource {
 
-	@GetMapping("/1")
+	@GetMapping("/jwt")
 	public Response testehello() {
 		Response res = new Response();
 		res.setResposta("Testando");
