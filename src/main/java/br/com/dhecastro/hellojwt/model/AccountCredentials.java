@@ -1,5 +1,10 @@
 package br.com.dhecastro.hellojwt.model;
 
+/**
+ * Model representativo do usuário
+ * @author dcastro
+ *
+ */
 public class AccountCredentials {
 	
 	private String username;

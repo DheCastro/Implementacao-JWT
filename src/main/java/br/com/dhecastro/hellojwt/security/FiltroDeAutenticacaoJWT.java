@@ -24,9 +24,13 @@ public class FiltroDeAutenticacaoJWT extends GenericFilterBean {
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain filterChain)
 			throws IOException, ServletException {
 		
+		//Manda a requisição para o serviço de autenticação do token
+		//e verifica a presença do mesmo no request
 		Authentication authentication = ServicoDeAutenticacaoDoToken
 				.verificaAutenticacao((HttpServletRequest) request);
 		
+		//Seta a autenticação no context de segurança da aplicação
+		//Se não encontrar o token no request, seta nulo
 		SecurityContextHolder.getContext().setAuthentication(authentication);
 		filterChain.doFilter(request, response);
 	}

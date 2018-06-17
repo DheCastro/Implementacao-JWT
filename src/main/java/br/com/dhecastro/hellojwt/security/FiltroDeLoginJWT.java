@@ -32,6 +32,10 @@ public class FiltroDeLoginJWT extends AbstractAuthenticationProcessingFilter {
         setAuthenticationManager(authManager);
     }
 
+	/**
+	 * Método que captura os dados da requisição de login e verifica se o usuário é válido.
+	 * Caso seja um usuário válido, chama o método successfulAuthentication
+	 */
     @Override
     public Authentication attemptAuthentication(
             HttpServletRequest req, HttpServletResponse res)
@@ -47,6 +51,9 @@ public class FiltroDeLoginJWT extends AbstractAuthenticationProcessingFilter {
         );
     }
 
+    /**
+     * Método que chama o serviço de autenticação por token para o mesmo adiconar um JWT ao response
+     */
     @Override
     protected void successfulAuthentication(
             HttpServletRequest req,
@@ -54,7 +61,7 @@ public class FiltroDeLoginJWT extends AbstractAuthenticationProcessingFilter {
             Authentication auth
     ) throws IOException, ServletException {
         
-    	ServicoDeAutenticacaoDoToken.autenticaUsuario(res, auth.getName());
+    	ServicoDeAutenticacaoDoToken.adicionaTokenAutenticacao(res, auth.getName());
     }
 
 }
